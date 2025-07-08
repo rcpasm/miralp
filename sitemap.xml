@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"> 
+
+  <url>
+    <loc>https://miralpcelik.com/</loc>
+  </url>
+
+    <url>
+        <loc>https://miralpcelik.com/index-en.html</loc>
+    </url>
+
+  <url>
+    <loc>https://miralpcelik.com/hakkimizda.html</loc>
+  </url>
+
+    <url>
+        <loc>https://miralpcelik.com/about.html</loc>
+    </url>
+
+  <url>
+    <loc>https://miralpcelik.com/calismalarimiz.html</loc>
+  </url>
+
+    <url>
+        <loc>https://miralpcelik.com/projects.html</loc>
+    </url>
+  
+  <url>
+    <loc>https://miralpcelik.com/galeri.html</loc>
+  </url>
+
+    <url>
+        <loc>https://miralpcelik.com/gallery.html</loc>
+    </url>
+
+  <url>
+    <loc>https://miralpcelik.com/iletisim.html</loc>
+  </url>
+
+    <url>
+        <loc>https://miralpcelik.com/contact.html</loc>
+    </url>
+
+</urlset>
