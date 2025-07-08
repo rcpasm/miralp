@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (document.querySelector('.video-container')) {
         initVideos();
     }
+    initGalleryLightbox(); // Galeri lightbox'u başlat
 });
 
 // Hamburger Menü Fonksiyonları
@@ -176,6 +177,61 @@ function initVideos() {
                         '<i class="fas fa-volume-up"></i>';
                 });
             }
+        }
+    });
+}
+
+// Galeri Lightbox
+function initGalleryLightbox() {
+    const galleryImages = document.querySelectorAll('.gallery-card img');
+    const lightboxBg = document.getElementById('galleryLightbox');
+    const lightboxImg = document.getElementById('galleryLightboxImg');
+    const lightboxClose = document.getElementById('galleryLightboxClose');
+    const lightboxPrev = document.getElementById('galleryLightboxPrev');
+    const lightboxNext = document.getElementById('galleryLightboxNext');
+    if (!galleryImages.length || !lightboxBg || !lightboxImg || !lightboxClose || !lightboxPrev || !lightboxNext) return;
+
+    let currentIndex = 0;
+
+    function showImage(index) {
+        currentIndex = (index + galleryImages.length) % galleryImages.length;
+        lightboxImg.src = galleryImages[currentIndex].src;
+        lightboxImg.alt = galleryImages[currentIndex].alt || '';
+    }
+
+    galleryImages.forEach((img, idx) => {
+        img.style.cursor = 'zoom-in';
+        img.addEventListener('click', () => {
+            showImage(idx);
+            lightboxBg.classList.add('active');
+            document.body.classList.add('menu-open');
+        });
+    });
+    function closeLightbox() {
+        lightboxBg.classList.remove('active');
+        lightboxImg.src = '';
+        document.body.classList.remove('menu-open');
+    }
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightboxBg.addEventListener('click', (e) => {
+        if (e.target === lightboxBg) closeLightbox();
+    });
+    lightboxPrev.addEventListener('click', (e) => {
+        e.stopPropagation();
+        showImage(currentIndex - 1);
+    });
+    lightboxNext.addEventListener('click', (e) => {
+        e.stopPropagation();
+        showImage(currentIndex + 1);
+    });
+    document.addEventListener('keydown', (e) => {
+        if (!lightboxBg.classList.contains('active')) return;
+        if (e.key === 'Escape' || e.key === 'Esc') {
+            closeLightbox();
+        } else if (e.key === 'ArrowLeft') {
+            showImage(currentIndex - 1);
+        } else if (e.key === 'ArrowRight') {
+            showImage(currentIndex + 1);
         }
     });
 }

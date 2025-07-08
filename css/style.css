@@ -2173,3 +2173,94 @@ body.menu-open {
         height: 140px;
     }
 } 
+
+/* Galeri Lightbox Stilleri */
+.gallery-lightbox-bg {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.85);
+    z-index: 3000;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s;
+}
+.gallery-lightbox-bg.active {
+    display: flex;
+}
+.gallery-lightbox-img {
+    max-width: 90vw;
+    max-height: 85vh;
+    border-radius: 12px;
+    box-shadow: 0 4px 32px rgba(0,0,0,0.25);
+    background: #fff;
+    object-fit: contain;
+}
+.gallery-lightbox-close {
+    position: absolute;
+    top: 32px;
+    right: 48px;
+    font-size: 2.5rem;
+    color: #fff;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 3100;
+    transition: color 0.2s;
+}
+.gallery-lightbox-close:hover {
+    color: #007bff;
+}
+@media (max-width: 600px) {
+    .gallery-lightbox-close {
+        top: 12px;
+        right: 16px;
+        font-size: 2rem;
+    }
+} 
+
+/* Lightbox Okları */
+.gallery-lightbox-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2.8rem;
+    color: #fff;
+    background: rgba(0,0,0,0.25);
+    border: none;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 3100;
+    transition: background 0.2s, color 0.2s;
+}
+.gallery-lightbox-arrow:hover {
+    background: #007bff;
+    color: #fff;
+}
+.gallery-lightbox-arrow.left {
+    left: 32px;
+}
+.gallery-lightbox-arrow.right {
+    right: 32px;
+}
+@media (max-width: 600px) {
+    .gallery-lightbox-arrow {
+        font-size: 2rem;
+        width: 40px;
+        height: 40px;
+    }
+    .gallery-lightbox-arrow.left {
+        left: 8px;
+    }
+    .gallery-lightbox-arrow.right {
+        right: 8px;
+    }
+} 
