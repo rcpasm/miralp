@@ -49,6 +49,13 @@ function initMobileMenu() {
         nav.classList.toggle('active');
         burger.classList.toggle('toggle');
 
+        // Body scroll engelleme
+        if (nav.classList.contains('active')) {
+            document.body.classList.add('menu-open');
+        } else {
+            document.body.classList.remove('menu-open');
+        }
+
         navLinks.forEach((link, index) => {
             if (link.style.animation) {
                 link.style.animation = '';
@@ -67,6 +74,9 @@ function initSlider() {
     const nextBtn = document.querySelector('.next-btn');
     let currentSlide = 0;
     let slideInterval;
+
+    // KORUMA: Slider elemanları yoksa fonksiyonu çalıştırma
+    if (slides.length === 0 || dots.length === 0) return;
 
     function showSlide(n) {
         slides.forEach(slide => slide.classList.remove('active'));
@@ -172,10 +182,12 @@ function initVideos() {
 
 // Scroll to top functionality
 window.addEventListener('scroll', () => {
+    const scrollTopBtn = document.querySelector('.scroll-top');
+    if (!scrollTopBtn) return;
     if (window.scrollY > 500) {
-        document.querySelector('.scroll-top').classList.add('active');
+        scrollTopBtn.classList.add('active');
     } else {
-        document.querySelector('.scroll-top').classList.remove('active');
+        scrollTopBtn.classList.remove('active');
     }
 });
 
@@ -194,6 +206,9 @@ function initHeaderScroll() {
     let lastScroll = 0;
     const navbar = document.querySelector('.navbar');
     const scrollThreshold = 50; // Kaç piksel scroll sonra header gizlensin
+
+    // KORUMA: Navbar yoksa fonksiyonu çalıştırma
+    if (!navbar) return;
 
     window.addEventListener('scroll', () => {
         const currentScroll = window.pageYOffset;
